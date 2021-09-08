@@ -8,10 +8,10 @@ var multer = require('multer');
 const { env } = require('process');
 // var upload = multer({dest:'uploads/'});
 // var upload = multer({ storage: storage });
-var folder = '/Browserstack Downloads';
+var folder = env['HOME']+'/Browserstack Downloads';
 
 var imageStorage = multer.diskStorage({
-  destination: path.join(env['HOME']+folder),
+  destination: path.join(folder),
   filename: function (req, file, cb) {
       cb(null , file.originalname);
   }
@@ -48,3 +48,6 @@ app.use('/', router);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+
+// app.use('/upload',)
